@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Address {
@@ -15,11 +18,50 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "address_id")
 	private int id;
-	private int house_no;
-	private String street;
+	
+	private String houseAddress;
+	
+	private String city;
+	
+	private String state;
+	
+	private int pinCode;
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+
+	public String getHouseAddress() {
+		return houseAddress;
+	}
+
+	public void setHouseAddress(String houseAddress) {
+		this.houseAddress = houseAddress;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) { 
+		this.city = city;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getPinCode() {
+		return pinCode;
+	}
+
+	public void setPinCode(int pinCode) {
+		this.pinCode = pinCode;
+	}
 
 	public void setUser(User user) {
 		this.user = user;
@@ -33,20 +75,5 @@ public class Address {
 		this.id = id;
 	}
 
-	public int getHouse_no() {
-		return house_no;
-	}
-
-	public void setHouse_no(int house_no) {
-		this.house_no = house_no;
-	}
-
-	public String getStreet() {
-		return street;
-	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
+	
 }
